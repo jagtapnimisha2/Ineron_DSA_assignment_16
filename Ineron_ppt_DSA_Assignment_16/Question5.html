@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function reverseNumberUsingStack(number) {
+  let numString = String(number);
+  let stack = [];
+  for (let i = 0; i < numString.length; i++) {
+    stack.push(numString[i]);
+  }
+  let reversedString = "";
+  while (stack.length > 0) {
+    reversedString += stack.pop();
+  }
+  let reversedNumber = parseInt(reversedString, 10);
+  return reversedNumber;
+}
+let number = 365;
+let reversedNumber = reverseNumberUsingStack(number);
+console.log("Original number:", number);
+console.log("Reversed number:", reversedNumber);
+
+    </script>
+</body>
+</html>

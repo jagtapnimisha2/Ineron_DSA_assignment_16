@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--question4:-Given a Queue consisting of first **n** natural numbers (in random order). The task is to check whether the given Queue elements can be arranged in increasing order in another Queue using a stack. The operation allowed are:
+
+1. Push and pop elements from the stack
+2. Pop (Or Dequeue) from the given Queue.
+3. Push (Or Enqueue) in the another Queue.
+
+**Examples :**
+
+Input : Queue[] = { 5, 1, 2, 3, 4 } 
+
+Output : Yes  -->
+    <script>
+        function checkQueueArrangement(queue) {
+  const stack = [];
+  const sortedQueue = [];
+
+  let expectedElement = 1;
+
+  while (queue.length > 0) {
+    const frontElement = queue.shift();
+
+    if (frontElement === expectedElement) {
+      sortedQueue.push(frontElement);
+      expectedElement++;
+    } else {
+      if (stack.length > 0 && stack[stack.length - 1] === expectedElement) {
+        while (stack.length > 0 && stack[stack.length - 1] === expectedElement) {
+          sortedQueue.push(stack.pop());
+          expectedElement++;
+        }
+      }
+      stack.push(frontElement);
+    }
+  }
+
+  while (stack.length > 0) {
+    sortedQueue.push(stack.pop());
+  }
+  for (let i = 0; i < sortedQueue.length - 1; i++) {
+    if (sortedQueue[i] >= sortedQueue[i + 1]) {
+      return "No";
+    }
+  }
+
+  return "Yes";
+}
+const queue = [5, 1, 2, 3, 4];
+const result = checkQueueArrangement(queue);
+document.write(result);
+
+    </script>
+</body>
+</html>

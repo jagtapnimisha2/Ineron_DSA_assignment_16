@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function deleteMiddle(stack) {
+  if (stack.length === 0) {
+    return;
+  }
+  
+  const middleIndex = Math.floor(stack.length / 2);
+  
+  // Base case: middle element is at the top of the stack
+  if (stack.length % 2 === 1) {
+    stack.splice(middleIndex, 1);
+    return;
+  }
+  
+  // Recursive case: middle element is not at the top of the stack
+  const temp = stack.pop();
+  deleteMiddle(stack);
+  stack.push(temp);
+}
+const stack = [1, 2, 3, 4, 5];
+deleteMiddle(stack);
+console.log(stack);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function countWordsAfterDestruction(sequence) {
+  const stack = [];
+
+  for (let i = 0; i < sequence.length; i++) {
+    const currentWord = sequence[i];
+
+    if (stack.length > 0 && currentWord === stack[stack.length - 1]) {
+      stack.pop();
+    } else {
+      stack.push(currentWord);
+    }
+  }
+
+  return stack.length;
+}
+const sequence = ["ab", "aa", "aa", "bcd", "ab"];
+const remainingWords = countWordsAfterDestruction(sequence);
+document.write("Number of words left:", remainingWords);
+
+    </script>
+</body>
+</html>
